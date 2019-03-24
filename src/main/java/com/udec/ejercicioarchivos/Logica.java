@@ -176,7 +176,7 @@ public class Logica {
             menu();
         }else if(conti.charAt(0) != 's' || conti.charAt(0) != 'n' ){
              System.out.println("ingrese un caracter valido");
-             
+             record();
         }
          
    }
@@ -220,7 +220,9 @@ public class Logica {
             if (entrada != null) {
                 try {
                     entrada.close();
+                    menu();
                 } catch (IOException ignored) {
+                    menu();
                 }
             }
          }
@@ -240,8 +242,10 @@ public class Logica {
             salida.close();
         } catch (FileNotFoundException e) {
             //e.printStackTrace();
+            menu();
         } catch (IOException e) {
             //e.printStackTrace();
+            menu();
         } 
         
     }
