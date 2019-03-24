@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.udec.ejercicioarchivos;
 
 
@@ -23,17 +18,31 @@ import java.util.Scanner;
 
 
 /**
- *
+ * Esta clase se encarga de toda la logica del proyecto
  * @author David
  */
 public class Logica {
+    /**
+     * se inicializa el scanner para capturar los datos que se ingresan
+     */
     Scanner scanner = new Scanner(System.in);
+    /**
+     * se inicializan las listas para trabajar con ellas
+     */
     ArrayList<Persona> listaPerona = new ArrayList<Persona>();
     ArrayList<Record> record = new ArrayList<Record>();
+    
+    /**
+     * constructor el cual le dara el sentido de funcionamiento a el programa
+     */
     public Logica() {
         datosIniciales();
         menu();
     }
+    
+    /**
+     * este metodo se encarga de capturar y enviar los datos, para que sean guardados en el archivo
+     */
     public void datosIniciales(){
         Persona content = new Persona(123, "julian", "Bustos");
         Record red = new Record(177,"movistar",false,5000);
@@ -48,6 +57,9 @@ public class Logica {
         insertar(listaPerona);
     }
     
+    /**
+     * este metodo es un menu el cual le da el sentido a el programa
+     */
     public void menu(){
         System.out.println("1. insertar");
         System.out.println("2. insertar Record");
@@ -66,10 +78,15 @@ public class Logica {
         }else if(variableControl == 5){
             System.exit(0);
         }else{
+            System.out.println("\nIngrese una opcion valida");
+            menu();
         }
     }
     
     
+    /**
+     * Este metodo captura los datos para ingresar usuarios a la lista
+     */
     public void escribir(){
         System.out.println("inserte su cedula");
         int ced = scanner.nextInt();
@@ -85,6 +102,9 @@ public class Logica {
 
     
    
+    /**
+     * este metodo que se encarga de eliminar los recor negativos
+     */
     public void eliminar(){
         System.out.println("Ingrese la cedula de quien quiera eliminar un record");
         int num = scanner.nextInt();
@@ -113,6 +133,12 @@ public class Logica {
     
     
   }
+    
+    
+    
+    /**
+     * metodo que se encarga de añadir record a la persona especificada
+     */
      public void record(){
         System.out.println("Ingrese la cedula de quien quiera añadir un record");
         int num = scanner.nextInt();
@@ -154,6 +180,11 @@ public class Logica {
         }
          
    }
+     
+     
+     /**
+      * metodo que lee del archivo e imprime los datos
+      */
     public void leer(){
         ObjectInputStream entrada= null; 
         try {
@@ -194,6 +225,12 @@ public class Logica {
             }
          }
     }
+    
+    
+    /**
+     * metodo que se encargade crear y guardar la informacion en el archivo previamente especificado 
+     * @param content : es la lista de persona con los datos ya cargados
+     */
     public void insertar(ArrayList<Persona> content) {
         ObjectOutputStream salida = null;
         try {
